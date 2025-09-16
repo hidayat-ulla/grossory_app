@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    let arry = ["1_97","5_37","3_42","4_29","2_33","0_192"];
+
+let parsed = arry.map(item => {
+  let [key, value] = item.split("_");
+  return { key: Number(key), value: value.split("").reverse().join("") };
+});
+
+parsed.sort((a, b) => a.key - b.key);
+
+parsed.forEach(item => {
+  console.log(`${item.key} => ${item.value}`);
+});
+
+    </script>
+</body>
+</html>

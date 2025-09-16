@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grocery List</title>
+  <style>
+    body { 
+        font-family: sans-serif;
+         background:#f2f2f2;
+         }
+    .box { 
+      max-width: 600px;  
+      margin:30px auto; 
+      background:#fff; 
+      padding:25px; 
+      border-radius:12px; 
+    }
+    h2 {
+         text-align:center;
+          margin-bottom:15px; 
+        }
+    .input-box 
+    {
+         display:flex;
+          gap:8px; 
+          margin-bottom:15px;
+        
+    }
+    .input-box input { 
+      flex:1; 
+      padding:10px; 
+      font-size:16px; 
+      border:1px solid #ccc; 
+      border-radius:8px; 
+    }
+    .input-box button { 
+      padding:10px 16px; 
+      font-size:16px; 
+      border:none; 
+      background:#333; 
+      color:#fff; 
+      border-radius:8px; 
+      cursor:pointer; 
+    }
+    .item { 
+      display:flex; 
+      justify-content:space-between; 
+      align-items:center; 
+      padding:10px; 
+      background:#f9f9f9; 
+      margin:8px 0; 
+      border-radius:8px; 
+      font-size:16px;
+
+    }
+    .left {
+          display:flex; 
+          align-items:center;
+          gap:10px;
+         }
+    .qty {
+         font-weight:bold;
+         }
+    .item button
+     {
+         padding:6px 12px; 
+         font-size:15px; 
+         border:none; 
+         border-radius:5px; 
+         cursor:pointer; 
+         font-size: 25px;
+        }
+    .item .delete 
+    { 
+        background:#e74c3c;
+        color:#fff;
+        font-size: 25px;
+     }
+    .item .plus, .item .minus 
+    {
+         background:gainsboro;
+        
+    }
+    .total 
+     {  
+        text-align:center;
+        margin-top:20px;
+        font-weight:bold;
+        font-size:20px; 
+    }
+  </style>
+</head>
+<body>
+<div class="box">
+  <h2>🛒 Grossry App</h2>
+
+  <div class="input-box">
+    <input id="input" placeholder="Enter item ....">
+    <button onclick="add()">Add</button>
+  </div>
+
+  <!-- List -->
+  <div id="list"></div>
+
+  <!-- Total at bottom -->
+  <p class="total">Total: <span id="total">0</span></p>
+</div>
+
+<script>
+let total=0;
+function update()
+{
+   document.getElementById("total").innerText=total; 
+}
+
+function add()
+{
+  let name=document.getElementById("input").value.trim();
+  if(!name) return;
+  let div=document.createElement("div");
+  div.className="item";
+  div.innerHTML=`
+    <div class="left">
+      <button class="minus" onclick="dec(this)">-</button>
+      <span><strong>${name}</strong> <span class="qty">1</span></span>
+    </div>
+    <div>
+      <button class="plus" onclick="inc(this)">+</button>
+      <button class="delete" onclick="del(this)">x</button>
+    </div>`;
+  document.getElementById("list").appendChild(div);
+  total++; update(); document.getElementById("input").value="";
+}
+function inc(btn)
+{ 
+  let q=btn.parentNode.parentNode.querySelector(".qty"); 
+  q.innerText=+q.innerText+1; total++;
+   update(); 
+}
+function dec(btn)
+{
+   let q=btn.parentNode.parentNode.querySelector(".qty");
+    if(q.innerText>1){ q.innerText--; total--;
+       update(); }
+      
+}
+function del(btn)
+{ 
+  let div=btn.parentNode.parentNode;
+ total-=+div.querySelector(".qty").innerText;
+  div.remove(); update();
+}
+</script>
+</body>
+</html>

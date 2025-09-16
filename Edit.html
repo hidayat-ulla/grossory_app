@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script> 
+    console.log("day 07");
+
+  var passingmarks=50;
+    var studentRecord = 
+    [
+        { name:'hidayat' ,age:20,marks:40},
+        { name:'imad' ,age:22,marks:50},
+        { name:'adnan' ,age:23,marks:20},
+        { name:'salman' ,age:25,marks:30},
+        { name:'zohaib' ,age:22,marks:30},
+        { name:'usman' ,age:28,marks:80}
+    ];
+  
+    var passtudenttotalmarks=0;
+
+    var updatestudentRecord = studentRecord.map((user)=>{
+        console.log(user.name + 'is' + user.age +'years old has scord' + user.marks);
+        user.marks=user.marks + 1;
+        user.pass = user.marks >=passingmarks;
+        return user;
+    }) 
+    var passstudent= updatestudentRecord.filter((user) => user.pass);
+    var failtudent= updatestudentRecord.filter((user) => !user.pass);
+    
+    var allstudentpass= updatestudentRecord.every((user) => user.pass);
+    var allstudentpass= updatestudentRecord.some((user) =>  ! user.pass);
+
+    var passtudenttotalmarks = passstudent.reduce((total,user) => total + user.marks,0)
+    console.log('student',updatestudentRecord,passstudent,);
+
+    </script>
+</body>
+</html>

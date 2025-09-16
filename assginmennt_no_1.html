@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .contaner {
+            width: 800px;
+            background-color: rgba(165, 205, 205, 0.553);
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 10px;
+            
+          
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+           
+            font-size: 25px;
+          
+          
+          
+        }
+        .table td,
+         .table th {
+            width: 200px;
+            height: 90px;
+            border: 1px solid black; 
+            border-radius: 15px;
+          
+         
+        }
+        .rowspan 
+        {
+         writing-mode: vertical-rl;
+         text-orientation: upright;
+         font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="contaner">
+        <table class="table">
+            <tr>
+                <th colspan="5" style="  font-size: 30px;">Time Table</th>
+            </tr>
+            <tr>
+                <td rowspan="2" class="rowspan">Timing</td>
+                <td>Monday</td>
+                <td>Tuesday</td>
+                <td>Wednesday</td>
+                <td>Friday</td>
+            </tr>
+            <tr>
+                <td>9:00</td>
+                <td>10:00</td>
+                <td>11:00</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td rowspan="2" class="rowspan">Scheduling</td>
+                <td>Monday</td>
+                <td>Tuesday</td>
+                <td>Wednesday</td>
+                <td>Friday</td>
+            </tr>
+            <tr>
+                <td>12:00</td>
+                <td>01:00</td>
+                <td>02:00</td>
+                <td>03:00</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
